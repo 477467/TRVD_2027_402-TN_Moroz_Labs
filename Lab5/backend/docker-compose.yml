@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:15
+    container_name: cyberpolice-db
+    environment:
+      POSTGRES_USER: cyber
+      POSTGRES_PASSWORD: cyber_password
+      POSTGRES_DB: cyberpolice
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata:
